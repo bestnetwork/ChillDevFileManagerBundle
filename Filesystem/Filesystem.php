@@ -75,7 +75,7 @@ class Filesystem
      */
     public function exists($path)
     {
-        return \file_exists($this->root . $path);
+        return \file_exists($this->root . DIRECTORY_SEPARATOR . $path);
     }
 
     /**
@@ -160,7 +160,7 @@ class Filesystem
     public function createDirectoryIterator($path)
     {
         $iterator = new FilesystemIterator(
-            $this->root . $path,
+            $this->root . DIRECTORY_SEPARATOR . $path,
             FilesystemIterator::KEY_AS_FILENAME
             | FilesystemIterator::CURRENT_AS_FILEINFO
             | FilesystemIterator::SKIP_DOTS
@@ -180,6 +180,6 @@ class Filesystem
      */
     public function getFileInfo($path)
     {
-        return new FileInfo($this->root . $path);
+        return new FileInfo($this->root . DIRECTORY_SEPARATOR . $path);
     }
 }
